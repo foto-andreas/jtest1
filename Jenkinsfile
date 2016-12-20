@@ -1,9 +1,13 @@
 pipeline {
-  agent docker:'gradle:3.2.1'
+  agent docker:'frekele/gradle'
   stages {
-    stage('build') {
+    stage('test') {
       steps {
         sh 'gradle --version'
+	sh 'java -version'
+      }
+    stage('build') {
+      steps {
         sh 'gradle tasks'
       }
     }
