@@ -1,10 +1,10 @@
 pipeline {
-  agent docker:'maven:3.3.3'
+  agent docker:'gradle:3.2.1'
   stages {
     stage('build') {
       steps {
-        sh 'mvn --version'
-        sh 'mvn install'
+        sh 'gradle --version'
+        sh 'gradle tasks'
       }
     }
   }
