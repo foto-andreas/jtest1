@@ -21,7 +21,7 @@ pipeline {
           },
           "Chrome" : {
             sh "echo testing Chrome"
-            sh "echo more steps"
+            sh "exit 1"
           }
         )
       }
