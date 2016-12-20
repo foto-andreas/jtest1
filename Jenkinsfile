@@ -4,7 +4,7 @@ pipeline {
     stage('test') {
       steps {
         sh 'gradle --version'
-	sh 'java -version'
+	      sh 'java -version'
       }
     }
     stage('build') {
@@ -12,6 +12,19 @@ pipeline {
         sh 'gradle tasks'
       }
     }
+    stage("test") {
+      steps {
+        parallel (
+          "Firefox" : {
+            sh "echo testing FFX"
+            sh "echo more steps"
+          },
+          "Chrome" : {
+            sh "echo testing Chrome"
+            sh "echo more steps"
+          }
+        }
+      )
+    }
   }
 }
-
