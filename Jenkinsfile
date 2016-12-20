@@ -6,6 +6,7 @@ pipeline {
         sh 'gradle --version'
 	sh 'java -version'
       }
+    }
     stage('build') {
       steps {
         sh 'gradle tasks'
