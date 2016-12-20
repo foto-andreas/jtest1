@@ -12,7 +12,7 @@ pipeline {
         sh 'gradle tasks'
       }
     }
-    stage("test") {
+    stage("parallel") {
       steps {
         parallel (
           "Firefox" : {
