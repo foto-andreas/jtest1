@@ -23,8 +23,8 @@ pipeline {
             sh "echo testing Chrome"
             sh "echo more steps"
           }
-        }
-      )
+        )
+      }
     }
   }
 }
