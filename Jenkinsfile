@@ -16,7 +16,7 @@ pipeline {
       steps {
         script {
           currentBuild.result = 'UNSTABLE'
-	}
+	      }
       }
     }
     stage("parallel") {
@@ -27,14 +27,24 @@ pipeline {
             sh "echo more steps"
           },
           "Chrome" : {
-            try {
               sh "echo testing Chrome"
               sh "exit 1"
-            } catch (e) {
-              currentBuild.result = 'UNSTABLE'
-            }
           }
         )
+      }
+      post {
+        failure {
+          sh 'echo was failure'
+          script {
+            currentBuild.result = 'UNSTABLE'
+          }
+        }
+        unstable {
+          sh 'echo was unstable'
+          script {
+            currentBuild.result = 'UNSTABLE'
+          }
+        }
       }
     }
   }
