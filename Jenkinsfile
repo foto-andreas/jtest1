@@ -12,17 +12,10 @@ pipeline {
         sh 'gradle tasks'
       }
     }
-    stage('yellow1') {
+    stage('yellow') {
       steps {
         script {
-          currentStage.result = 'UNSTABLE'
-	}
-      }
-    }
-    stage('yellow2') {
-      steps {
-        script {
-          currentStage.result = 'UNSTABLE'
+          currentBuild.result = 'UNSTABLE'
 	}
       }
     }
@@ -36,6 +29,12 @@ pipeline {
           "Chrome" : {
             sh "echo testing Chrome"
             sh "exit 1"
+          },
+          "Safari" : {
+            sh "echo testing Safari"
+            script {
+              currentBuild.result = 'UNSTABLE'
+            }
           }
         )
       }
