@@ -4,7 +4,7 @@ pipeline {
     stage('test') {
       steps {
         sh 'gradle --version'
-	        sh 'java -version'
+        sh 'java -version'
       }
     }
     stage('build') {
@@ -27,12 +27,10 @@ pipeline {
             sh "echo more steps"
           },
           "Chrome" : {
-            sh "echo testing Chrome"
-            sh "exit 1"
-          },
-          "Safari" : {
-            sh "echo testing Safari"
-            script {
+            try {
+              sh "echo testing Chrome"
+              sh "exit 1"
+            } catch (e) {
               currentBuild.result = 'UNSTABLE'
             }
           }
