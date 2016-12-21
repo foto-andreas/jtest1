@@ -14,12 +14,12 @@ pipeline {
     }
     stage('yellow1') {
       steps {
-        currentBuild.status = 'UNSTABLE'
+        currentBuild.result = 'UNSTABLE'
       }
     }
     stage('yellow2') {
       steps {
-        currentStage.status = 'UNSTABLE'
+        currentStage.result = 'UNSTABLE'
       }
     }
     stage("parallel") {
