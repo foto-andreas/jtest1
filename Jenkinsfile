@@ -4,12 +4,22 @@ pipeline {
     stage('test') {
       steps {
         sh 'gradle --version'
-	      sh 'java -version'
+	        sh 'java -version'
       }
     }
     stage('build') {
       steps {
         sh 'gradle tasks'
+      }
+    }
+    stage('yellow1') {
+      steps {
+        currentBuild.status = 'UNSTABLE'
+      }
+    }
+    stage('yellow2') {
+      steps {
+        currentStage.status = 'UNSTABLE'
       }
     }
     stage("parallel") {
